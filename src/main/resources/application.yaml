@@ -7,3 +7,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/transaction_category_db
     username: "postgres"
     password: "2213"
+  jpa:
+    generate-ddl: false
