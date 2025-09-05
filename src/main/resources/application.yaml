@@ -1,0 +1,9 @@
+#spring.application.name=transaction-category-service
+
+spring:
+  application:
+    name: transaction-category-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transaction_category_db
+    username: "postgres"
+    password: "2213"
