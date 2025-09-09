@@ -1,6 +1,6 @@
-package br.com.andredeve.transaction.category.service.domain.repository;
+package br.com.andredevel.transaction.category.service.domain.repository;
 
-import br.com.andredeve.transaction.category.service.domain.model.TransactionCategory;
+import br.com.andredevel.transaction.category.service.domain.model.TransactionCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

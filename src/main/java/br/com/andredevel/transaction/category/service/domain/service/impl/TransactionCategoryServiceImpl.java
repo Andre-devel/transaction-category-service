@@ -1,9 +1,8 @@
-package br.com.andredeve.transaction.category.service.domain.service.impl;
+package br.com.andredevel.transaction.category.service.domain.service.impl;
 
-import br.com.andredeve.transaction.category.service.domain.model.TransactionCategory;
-import br.com.andredeve.transaction.category.service.domain.repository.TransactionCategoryRepository;
-import br.com.andredeve.transaction.category.service.domain.service.TransactionCategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.andredevel.transaction.category.service.domain.model.TransactionCategory;
+import br.com.andredevel.transaction.category.service.domain.repository.TransactionCategoryRepository;
+import br.com.andredevel.transaction.category.service.domain.service.TransactionCategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

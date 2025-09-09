@@ -1,8 +1,9 @@
-package br.com.andredeve.transaction.category.service.domain.model;
+package br.com.andredevel.transaction.category.service.domain.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -10,21 +11,23 @@ import java.util.UUID;
 @Getter
 @Embeddable
 @EqualsAndHashCode
-public class UserId implements Serializable {
+public class TransactionCategoryId implements Serializable {
     private UUID value;
 
-    public UserId() {
+    public TransactionCategoryId() {
         this(UUID.randomUUID());
     }
-
-    public UserId(UUID value) {
+    
+    public TransactionCategoryId(UUID value) {
         this.value = value;
     }
 
-    public UserId(String value) {
+    public TransactionCategoryId(String value) {
         this.value = UUID.fromString(value);
     }
-    
+
+   
+
     @Override
     public String toString() {
         return value.toString();

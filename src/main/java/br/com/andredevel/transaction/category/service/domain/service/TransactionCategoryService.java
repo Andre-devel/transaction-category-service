@@ -1,6 +1,6 @@
-package br.com.andredeve.transaction.category.service.domain.service;
+package br.com.andredevel.transaction.category.service.domain.service;
 
-import br.com.andredeve.transaction.category.service.domain.model.TransactionCategory;
+import br.com.andredevel.transaction.category.service.domain.model.TransactionCategory;
 
 import java.util.List;
 import java.util.Optional;

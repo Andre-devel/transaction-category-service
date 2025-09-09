@@ -1,4 +1,4 @@
-package br.com.andredeve.transaction.category.service.domain.config;
+package br.com.andredevel.transaction.category.service.domain.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

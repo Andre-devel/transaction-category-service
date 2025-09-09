@@ -1,4 +1,4 @@
-package br.com.andredeve.transaction.category.service.domain.model;
+package br.com.andredevel.transaction.category.service.domain.model;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;

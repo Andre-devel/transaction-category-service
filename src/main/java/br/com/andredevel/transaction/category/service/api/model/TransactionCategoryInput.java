@@ -1,4 +1,4 @@
-package br.com.andredeve.transaction.category.service.api.model;
+package br.com.andredevel.transaction.category.service.api.model;
 
 import lombok.Builder;
 import lombok.Data;
