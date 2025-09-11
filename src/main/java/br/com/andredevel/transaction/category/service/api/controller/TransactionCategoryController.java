@@ -49,14 +49,12 @@ public class TransactionCategoryController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TransactionCategory> updateTransactionCategory(@PathVariable UUID id, @RequestBody TransactionCategory transactionCategoryDetails) {
-        return transactionCategoryService.findById(id)
-                .map(transactionCategory -> {
-                    transactionCategory.setName(transactionCategoryDetails.getName());
-                    transactionCategory.setDescription(transactionCategoryDetails.getDescription());
-                    transactionCategory.setIdUser(transactionCategoryDetails.getIdUser());
-                    return ResponseEntity.ok(transactionCategoryService.save(transactionCategory));
-                })
-                .orElse(ResponseEntity.notFound().build());
+        TransactionCategory updatedCategory = TransactionCategory.builder()
+                .id(new TransactionCategoryId(id))
+                .name(transactionCategoryDetails.getName())
+                .description(transactionCategoryDetails.getDescription())
+                .build();
+        return ResponseEntity.ok(transactionCategoryService.save(updatedCategory));
     }
 
     @DeleteMapping("/{id}")
