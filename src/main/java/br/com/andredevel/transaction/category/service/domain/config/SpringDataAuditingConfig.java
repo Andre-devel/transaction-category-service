@@ -5,9 +5,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,7 +26,10 @@ public class SpringDataAuditingConfig {
     }
 
     @Bean
-    public AuditorAware<UUID> auditorProvider() { // In a real application, replace this with actual user identification logic
-        return () -> Optional.of(UUID.randomUUID());
+    public AuditorAware<UUID> auditorProvider() {
+        return () -> {
+            String idString = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return Optional.of(UUID.fromString(idString));
+        };
     }
 }

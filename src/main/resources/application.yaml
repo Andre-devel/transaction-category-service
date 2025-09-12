@@ -10,3 +10,9 @@ spring:
     password: "2213"
   jpa:
     generate-ddl: false
+
+logging:
+  level:
+    br.com.andredevel.transaction.category.service.api.config: DEBUG
+    org.springframework.security: DEBUG
+    ROOT: INFO

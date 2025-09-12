@@ -1,6 +1,7 @@
 package br.com.andredevel.transaction.category.service.domain.service.impl;
 
 import br.com.andredevel.transaction.category.service.domain.model.TransactionCategory;
+import br.com.andredevel.transaction.category.service.domain.model.TransactionCategoryId;
 import br.com.andredevel.transaction.category.service.domain.repository.TransactionCategoryRepository;
 import br.com.andredevel.transaction.category.service.domain.service.TransactionCategoryService;
 import jakarta.persistence.EntityManager;
@@ -14,11 +15,9 @@ import java.util.UUID;
 public class TransactionCategoryServiceImpl implements TransactionCategoryService {
     
     private final TransactionCategoryRepository transactionCategoryRepository;
-    private final EntityManager entityManager;
     
-    public TransactionCategoryServiceImpl(TransactionCategoryRepository transactionCategoryRepository, EntityManager entityManager) {
+    public TransactionCategoryServiceImpl(TransactionCategoryRepository transactionCategoryRepository) {
         this.transactionCategoryRepository = transactionCategoryRepository;
-        this.entityManager = entityManager;
     }
 
     @Override
@@ -28,7 +27,7 @@ public class TransactionCategoryServiceImpl implements TransactionCategoryServic
 
     @Override
     public Optional<TransactionCategory> findById(UUID id) {
-        return transactionCategoryRepository.findById(id);
+        return transactionCategoryRepository.findById(new TransactionCategoryId(id));
     }
 
     @Override
@@ -36,7 +35,7 @@ public class TransactionCategoryServiceImpl implements TransactionCategoryServic
         UUID categoryId = transactionCategory.getId().getValue();
         
         if (categoryId != null) {
-            transactionCategoryRepository.findById(categoryId).ifPresentOrElse(
+            transactionCategoryRepository.findById(new TransactionCategoryId(categoryId)).ifPresentOrElse(
                     existingCategory -> update(existingCategory, transactionCategory),
                     () -> insert(transactionCategory));
         } else {
@@ -52,7 +51,6 @@ public class TransactionCategoryServiceImpl implements TransactionCategoryServic
     
     private void update(TransactionCategory existingCategory, TransactionCategory newCategory) {
         TransactionCategory persistenceCategory = merge(existingCategory, newCategory);
-        entityManager.detach(persistenceCategory);
         newCategory = transactionCategoryRepository.saveAndFlush(persistenceCategory);
     }   
     
@@ -64,6 +62,6 @@ public class TransactionCategoryServiceImpl implements TransactionCategoryServic
 
     @Override
     public void deleteById(UUID id) {
-        transactionCategoryRepository.deleteById(id);
+        transactionCategoryRepository.deleteById(new TransactionCategoryId(id));
     }
 }
