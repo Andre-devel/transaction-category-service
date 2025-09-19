@@ -1,9 +1,10 @@
 package br.com.andredevel.transaction.category.service.api.controller;
 
 import br.com.andredevel.transaction.category.service.api.model.TransactionCategoryInput;
-import br.com.andredevel.transaction.category.service.domain.model.TransactionCategory;
-import br.com.andredevel.transaction.category.service.domain.model.TransactionCategoryId;
-import br.com.andredevel.transaction.category.service.domain.model.UserId;
+import br.com.andredevel.transaction.category.service.domain.model.entity.TransactionCategory;
+import br.com.andredevel.transaction.category.service.domain.model.id.TransactionCategoryId;
+import br.com.andredevel.transaction.category.service.domain.model.id.UserId;
+import br.com.andredevel.transaction.category.service.domain.model.valueobject.Name;
 import br.com.andredevel.transaction.category.service.domain.service.TransactionCategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +49,7 @@ public class TransactionCategoryController {
         
         TransactionCategory newCategory = TransactionCategory.builder()
                 .id(new TransactionCategoryId())
-                .name(transactionCategory.getName())
+                .name(new Name(transactionCategory.getName()))
                 .description(transactionCategory.getDescription())
                 .idUser(new UserId(transactionCategory.getIdUser()))
                 .build();

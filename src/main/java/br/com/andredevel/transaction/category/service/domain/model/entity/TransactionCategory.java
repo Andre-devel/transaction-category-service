@@ -1,5 +1,8 @@
-package br.com.andredevel.transaction.category.service.domain.model;
+package br.com.andredevel.transaction.category.service.domain.model.entity;
 
+import br.com.andredevel.transaction.category.service.domain.model.id.TransactionCategoryId;
+import br.com.andredevel.transaction.category.service.domain.model.id.UserId;
+import br.com.andredevel.transaction.category.service.domain.model.valueobject.Name;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,10 +37,11 @@ public class TransactionCategory {
     
     @AttributeOverride(name ="value", column = @Column(name = "id_user", columnDefinition = "UUID"))
     private UserId idUser;
-    
-    private String name;
-    private String description;
 
+    @AttributeOverride(name = "value", column = @Column(name = "name", columnDefinition = "string"))
+    private Name name;
+    
+    private String description;
 
     @CreatedDate
     private OffsetDateTime createdAt;

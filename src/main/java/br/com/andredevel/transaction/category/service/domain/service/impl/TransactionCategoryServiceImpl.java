@@ -1,10 +1,10 @@
 package br.com.andredevel.transaction.category.service.domain.service.impl;
 
-import br.com.andredevel.transaction.category.service.domain.model.TransactionCategory;
-import br.com.andredevel.transaction.category.service.domain.model.TransactionCategoryId;
+import br.com.andredevel.transaction.category.service.domain.model.entity.TransactionCategory;
+import br.com.andredevel.transaction.category.service.domain.model.id.TransactionCategoryId;
+import br.com.andredevel.transaction.category.service.domain.model.validator.rule.NameRuleValidator;
 import br.com.andredevel.transaction.category.service.domain.repository.TransactionCategoryRepository;
 import br.com.andredevel.transaction.category.service.domain.service.TransactionCategoryService;
-import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,10 +46,12 @@ public class TransactionCategoryServiceImpl implements TransactionCategoryServic
     }
     
     private void insert(TransactionCategory transactionCategory) {
+        NameRuleValidator.validateNameUniqueForUser(transactionCategoryRepository, transactionCategory);
         transactionCategory = transactionCategoryRepository.saveAndFlush(transactionCategory);
     }
     
     private void update(TransactionCategory existingCategory, TransactionCategory newCategory) {
+        NameRuleValidator.validateNameUniqueForUser(transactionCategoryRepository, newCategory);
         TransactionCategory persistenceCategory = merge(existingCategory, newCategory);
         newCategory = transactionCategoryRepository.saveAndFlush(persistenceCategory);
     }   

@@ -1,4 +1,4 @@
-package br.com.andredevel.transaction.category.service.domain.model;
+package br.com.andredevel.transaction.category.service.domain.model.id;
 
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
